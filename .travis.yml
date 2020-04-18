@@ -1,0 +1,16 @@
+language: java
+
+jdk:
+  - openjdk8
+  - openjdk11
+
+#script: ant build
+
+#before_install:
+#  - cd java
+
+#before_script:
+#  - mv -r DataAnalysis/src .
+
+#script:
+#  - ant test
