@@ -4,6 +4,12 @@ jdk:
   - openjdk8
 #  - openjdk11
 
+services:
+  -docker
+
+#before_script:
+#  - pip install docker-compose
+
 #script: ant build
 
 #before_install:
