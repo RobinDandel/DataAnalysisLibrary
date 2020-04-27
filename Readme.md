@@ -4,7 +4,7 @@ Robin DANDEL
 
 -Github
 -Maven
--JUnit
+-JUnit 4
 -Travis CI
 -Docker
 -Badge de Travis CI

@@ -1,6 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        Pandas pandas = new Pandas("src/main/resources/Car_ Evaluation_Database.csv");
-        System.out.println(pandas.valMoy("doors"));
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        /*List<String> labels = new ArrayList<>();
+        List<Integer> indexs = new ArrayList<>();
+        labels.add("doors");
+        labels.add("nb_roues");//n'existe pas
+        labels.add("lug_boot");
+        indexs.add(2);
+        indexs.add(4);
+        Dataframe dataframe2 =dataframe.newDataframe(labels,indexs);
+        dataframe2.displayAllDataframe();
+        */
+        System.out.println(dataframe.valMoy("persons"));
     }
 }

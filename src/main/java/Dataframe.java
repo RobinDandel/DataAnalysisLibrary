@@ -1,15 +1,18 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Pandas {
-    Object[][] dataframe;
-    String[] types = null;
-    Pandas(Object[][] tab){
-        this.dataframe =tab;
+public class Dataframe {
+    Object[][] tab;//données (la 1ère ligne pour les labels des colonnes)
+    String[] types = null;//tableau des types de chaque colonne
+    Dataframe(Object[][] tab,String[] types){
+        this.tab =tab;
+        this.types=types;
     }
-    Pandas(String pathCsvFile){
-        this.dataframe =parseurCSV(pathCsvFile);
+    Dataframe(String pathCsvFile){
+        this.tab =parseurCSV(pathCsvFile);
     }
 
     Object[][] parseurCSV(String pathCsvFile){
@@ -79,58 +82,56 @@ public class Pandas {
 
 
     void displayAllDataframe(){
-        for (int i = 0; i< dataframe.length; i++){
-            for (int j = 0; j< dataframe[i].length; j++){
-                System.out.print(dataframe[i][j]+"\t\t");
+        for (int i = 0; i< tab.length; i++){
+            for (int j = 0; j< tab[i].length; j++){
+                System.out.print(tab[i][j]+"\t\t");
             }
             System.out.println("");
         }
     }
 
     public void displayFirstLigneDataFrame(){
-        for (int j = 0; j< dataframe[0].length; j++){
-            System.out.print(dataframe[0][j]+"\t\t");
+        for (int j = 0; j< tab[0].length; j++){
+            System.out.print(tab[0][j]+"\t\t");
         }
         System.out.println("");
-        for (int j = 0; j< dataframe[1].length; j++){
-            System.out.print(dataframe[1][j]+"\t\t");
+        for (int j = 0; j< tab[1].length; j++){
+            System.out.print(tab[1][j]+"\t\t");
         }
     }
 
     public void displayLastLigneDataFrame(){
-        for (int j = 0; j< dataframe[0].length; j++){
-            System.out.print(dataframe[0][j]+"\t\t");
+        for (int j = 0; j< tab[0].length; j++){
+            System.out.print(tab[0][j]+"\t\t");
         }
         System.out.println("");
-        for (int j = 0; j< dataframe[1].length; j++){
-            System.out.print(dataframe[dataframe.length-1][j]+"\t\t");
+        for (int j = 0; j< tab[1].length; j++){
+            System.out.print(tab[tab.length-1][j]+"\t\t");
         }
     }
 
     //valeur max de la colonne "nameColumn"
-    public Object valMax(String nameColumn){
-        int i=1;
-        while(!dataframe[0][i].equals(nameColumn) && i<dataframe[0].length){i++;}
-
-        if (i<dataframe[0].length){
+    public Object valMax(String label){
+        int i = numColonne(label);
+        if (i!=-1){
             switch (types[i]){
                 case "String":
                     System.err.println("La valeur Max ne peut pas être fait sur un String");
                     break;
                 case "Integer":
-                    int iMax=(Integer)dataframe[1][i];
-                    for (int k = 1; k<dataframe.length; k++){
-                        if ((Integer)dataframe[k][i]>iMax) {
-                            iMax = (int) dataframe[k][i];
+                    int iMax=(Integer) tab[1][i];
+                    for (int k = 1; k< tab.length; k++){
+                        if ((Integer) tab[k][i]>iMax) {
+                            iMax = (int) tab[k][i];
                         }
                     }
                     return iMax;
                 case "Float":
-                    float fMax=(Float) dataframe[1][i];
-                    for (int k = 1; k<dataframe.length; k++){
-                        System.out.print(dataframe[k][i]+"\t\t");
-                        if ((Float)dataframe[k][i]>fMax){
-                            fMax=(Float)dataframe[k][i];
+                    float fMax=(Float) tab[1][i];
+                    for (int k = 1; k< tab.length; k++){
+                        System.out.print(tab[k][i]+"\t\t");
+                        if ((Float) tab[k][i]>fMax){
+                            fMax=(Float) tab[k][i];
                         }
 
                     }
@@ -142,30 +143,28 @@ public class Pandas {
         return null;
     }
 
-    //valeur min de la colonne "nameColumn"
-    public Object valMin(String nameColumn){
-        int i=1;
-        while(!dataframe[0][i].equals(nameColumn) && i<dataframe[0].length){i++;}
-
-        if (i<dataframe[0].length){
+    //valeur min de la colonne "label"
+    public Object valMin(String label){
+        int i = numColonne(label);
+        if (i!=-1){
             switch (types[i]){
                 case "String":
                     System.err.println("La valeur Min ne peut pas être fait sur un String");
                     break;
                 case "Integer":
-                    int iMin =(Integer)dataframe[1][i];
-                    for (int k = 1; k<dataframe.length; k++){
-                        if ((Integer)dataframe[k][i]<iMin) {
-                            iMin = (int) dataframe[k][i];
+                    int iMin =(Integer) tab[1][i];
+                    for (int k = 1; k< tab.length; k++){
+                        if ((Integer) tab[k][i]<iMin) {
+                            iMin = (int) tab[k][i];
                         }
                     }
                     return iMin;
                 case "Float":
-                    float fMin =(Float) dataframe[1][i];
-                    for (int k = 1; k<dataframe.length; k++){
-                        System.out.print(dataframe[k][i]+"\t\t");
-                        if ((Float)dataframe[k][i]<fMin){
-                            fMin =(Float)dataframe[k][i];
+                    float fMin =(Float) tab[1][i];
+                    for (int k = 1; k< tab.length; k++){
+                        System.out.print(tab[k][i]+"\t\t");
+                        if ((Float) tab[k][i]<fMin){
+                            fMin =(Float) tab[k][i];
                         }
 
                     }
@@ -177,27 +176,25 @@ public class Pandas {
         return null;
     }
 
-    //valeur moyen de la colonne "nameColumn"
-    public Object valMoy(String nameColumn){
-        int i=1;
-        while(!dataframe[0][i].equals(nameColumn) && i<dataframe[0].length){i++;}
-
-        if (i<dataframe[0].length){
+    //valeur moyen de la colonne "label"
+    public Object valMoy(String label){
+        int i = numColonne(label);
+        if (i!=-1){
             int k;
             switch (types[i]){
                 case "String":
                     System.err.println("La valeur Min ne peut pas être fait sur un String");
                     break;
                 case "Integer":
-                    int iMoy =(Integer)dataframe[1][i];
-                    for (k = 1; k<dataframe.length; k++){
-                        iMoy+=(Integer)dataframe[k][i];
+                    int iMoy =(Integer) tab[1][i];
+                    for (k = 1; k< tab.length; k++){
+                        iMoy+=(Integer) tab[k][i];
                     }
                     return iMoy/(k-1.0);
                 case "Float":
-                    float fMoy =(Float)dataframe[1][i];
-                    for (k = 1; k<dataframe.length; k++){
-                        fMoy+=(Float)dataframe[k][i];
+                    float fMoy =(Float) tab[1][i];
+                    for (k = 1; k< tab.length; k++){
+                        fMoy+=(Float) tab[k][i];
                     }
                     return fMoy/(k-1.0);
                 default:
@@ -206,5 +203,57 @@ public class Pandas {
         }
         return null;
     }
+    //renvoit un sous ensemble des données de la Dataframe existant
+    //selection du sous ensemble des données grace aux labels (colonnes) et aux indexs (lignes)
+    public Dataframe newDataframe(List<String> labels,List<Integer> indexs){
+        Object[][] newTab;
+        String[] newTypes = new String[labels.size()+1];
+        newTypes[0]="";
+        List<Integer> numColonnes = new ArrayList<>();
+        numColonnes.add(0);
+        int num,k,numType=1;
+        //on prend l'index des bonnes colonnes
+        for (k=0;k<labels.size();k++) {
+            num=numColonne(labels.get(k));
+            if (num!=-1 && !numColonnes.contains(num)) {
+                numColonnes.add(num);
+                newTypes[numType]=types[num];
+                numType++;
+            }
+        }
+        newTab = new Object[indexs.size()+1][numColonnes.size()];
+        newTab[0][0]="";
+        //insertion des labels dans le nouveau tableau
+        for (k=0;k<numColonnes.size();k++) {
+            newTab[0][k]=tab[0][numColonnes.get(k)];
+        }
+        //insertion des données dans le nouveau tableau
+        for (int i=0;i<indexs.size();i++){
+            newTab[i+1][0]=i;
+            for (int j=1;j<numColonnes.size();j++){
+                newTab[i+1][j]=tab[indexs.get(i)+1][numColonnes.get(j)];
+            }
+        }
+
+        return new Dataframe(newTab,newTypes);
+    }
+
+    //revoit le numéro de la colonne qui a pour nom "label"
+    // i si trouvé
+    // -1 sinon
+    Integer numColonne(String label){
+        int i=1;
+        if(label.equals("")){return -1;}
+        while(i<tab[0].length && !tab[0][i].equals(label)){
+            i++;
+        }
+        if (i< tab[0].length) {
+            return i;
+        }else{
+            return -1;
+        }
+    }
+
+
 
 }
