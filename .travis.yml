@@ -10,7 +10,7 @@ services:
 #before_script:
 #  - pip install docker-compose
 
-script: clean validate compile test package verify install site -f pom.xml
+#script: clean validate compile test package verify install site -f pom.xml
 
 #before_install:
 #  - cd java
