@@ -16,11 +16,10 @@
         </repository>
     </distributionManagement>
     -->
-    <!--ouiii
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-    </properties> -->
+    </properties>
     <groupId>org.example</groupId>
     <artifactId>DataAnalysisLibrary</artifactId>
     <version>1.0-SNAPSHOT</version>
@@ -38,7 +37,6 @@
     <build>
         <plugins>
             <!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-            <!--oui
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -58,9 +56,7 @@
                     </execution>
                 </executions>
             </plugin>
-            -->
             <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-            <!-- ouii
             <plugin>
                  <groupId>org.apache.maven.plugins</groupId>
                  <artifactId>maven-compiler-plugin</artifactId>
@@ -68,7 +64,7 @@
                  <configuration>
 
                  </configuration>
-             </plugin>-->
+             </plugin>
 
             <!---->
 
@@ -80,22 +76,22 @@
             </plugin>-->
 
 
-            <!-- oui
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.7.1</version>
-                </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.0.0</version>
-                </plugin>
-            -->
-             </plugins>
-         </build>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+
+         </plugins>
+     </build>
 
 
 
-     </project>
+ </project>
