@@ -16,7 +16,7 @@ public class DataframeTest {
     @After
     public void tearDown() throws Exception {
     }
-
+/*
     @Test
     public void parseurCSV() {
     }
@@ -32,13 +32,13 @@ public class DataframeTest {
     @Test
     public void displayLastLigneDataFrame() {
     }
-
+*/
     @Test
     public void valMax() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
         assertEquals(5,dataframe.valMax("doors"));
     }
-
+/*
     @Test
     public void valMin() {
 
@@ -68,4 +68,6 @@ public class DataframeTest {
 
         /////////////////pas fini//////////////////
     }
+    */
+
 }
