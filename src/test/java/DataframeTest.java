@@ -36,7 +36,7 @@ public class DataframeTest {
     @Test
     public void valMax() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
-        assertEquals(5,dataframe.valMax("doors"));
+        assertEquals(6,dataframe.valMax("doors"));
     }
 /*
     @Test
