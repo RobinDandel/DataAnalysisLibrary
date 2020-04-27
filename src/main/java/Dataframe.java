@@ -116,7 +116,7 @@ public class Dataframe {
         if (i!=-1){
             switch (types[i]){
                 case "String":
-                    System.err.println("La valeur Max ne peut pas être fait sur un String");
+                    //System.err.println("La valeur Max ne peut pas être fait sur un String");
                     break;
                 case "Integer":
                     int iMax=(Integer) tab[1][i];
@@ -129,7 +129,6 @@ public class Dataframe {
                 case "Float":
                     float fMax=(Float) tab[1][i];
                     for (int k = 1; k< tab.length; k++){
-                        System.out.print(tab[k][i]+"\t\t");
                         if ((Float) tab[k][i]>fMax){
                             fMax=(Float) tab[k][i];
                         }
@@ -149,7 +148,7 @@ public class Dataframe {
         if (i!=-1){
             switch (types[i]){
                 case "String":
-                    System.err.println("La valeur Min ne peut pas être fait sur un String");
+                    //System.err.println("La valeur Min ne peut pas être fait sur un String");
                     break;
                 case "Integer":
                     int iMin =(Integer) tab[1][i];
@@ -162,7 +161,6 @@ public class Dataframe {
                 case "Float":
                     float fMin =(Float) tab[1][i];
                     for (int k = 1; k< tab.length; k++){
-                        System.out.print(tab[k][i]+"\t\t");
                         if ((Float) tab[k][i]<fMin){
                             fMin =(Float) tab[k][i];
                         }
@@ -183,7 +181,7 @@ public class Dataframe {
             int k;
             switch (types[i]){
                 case "String":
-                    System.err.println("La valeur Min ne peut pas être fait sur un String");
+                    //System.err.println("La valeur Min ne peut pas être fait sur un String");
                     break;
                 case "Integer":
                     int iMoy =(Integer) tab[1][i];

@@ -8,9 +8,13 @@ Robin DANDEL
 -Travis CI
 -Docker
 -Badge de Travis CI
+-fichier .csv avec le type en haut
 
 
 Source svg:
     Title: Car Evaluation Database
     Createur: Marko Bohanec
+
+    Title: Forest Fires
+    Createur: Paulo Cortez and Aníbal Morais
 

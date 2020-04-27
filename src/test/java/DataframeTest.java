@@ -37,19 +37,37 @@ public class DataframeTest {
     public void valMax() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
         assertEquals(5,dataframe.valMax("doors"));
+
+        Dataframe dataframe2 = new Dataframe("src/main/resources/forestfires.csv");
+        assertEquals((float)33.3,dataframe2.valMax("temp"));
+
+        assertNull(dataframe2.valMax("month"));//Max sur un String
     }
-/*
+
     @Test
     public void valMin() {
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        assertEquals(2,dataframe.valMin("persons"));
 
+        Dataframe dataframe2 = new Dataframe("src/main/resources/forestfires.csv");
+        assertEquals((float)0.4,dataframe2.valMin("wind"));
+
+        assertNull(dataframe2.valMax("day"));//Min sur un String
     }
 
     @Test
     public void valMoy() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
         assertEquals(3.334490740740741,dataframe.valMoy("persons"));
-    }
 
+        Dataframe dataframe2 = new Dataframe("src/main/resources/forestfires.csv");
+        assertEquals(9.031523890836556,dataframe2.valMoy("ISI"));
+
+        assertNull(dataframe2.valMax("month"));//Moy sur un String
+
+
+    }
+/*
     @Test
     public void newDataframe() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
