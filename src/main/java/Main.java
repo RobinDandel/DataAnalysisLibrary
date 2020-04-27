@@ -3,7 +3,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Dataframe dataframe = new Dataframe("src/main/resources/forestfires.csv");
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        System.out.println(dataframe.valMax("doors"));
         /*List<String> labels = new ArrayList<>();
         List<Integer> indexs = new ArrayList<>();
         labels.add("doors");
@@ -15,6 +16,6 @@ public class Main {
         dataframe2.displayAllDataframe();
         */
         //dataframe.displayAllDataframe();
-        System.out.println(dataframe.valMoy("ISI"));
+        //System.out.println(dataframe.valMoy("ISI"));
     }
 }
