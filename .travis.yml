@@ -4,8 +4,9 @@ jdk:
   - openjdk8
 #  - openjdk11
 
-services:
-  -docker
+#######A METTRE###########"
+#services:
+#  -docker
 
 #before_script:
 #  - pip install docker-compose
