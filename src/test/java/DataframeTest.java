@@ -33,7 +33,7 @@ public class DataframeTest {
     public void displayLastLigneDataFrame() {
     }
 */
-   /* @Test
+    @Test
     public void valMax() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
         assertEquals(5,dataframe.valMax("doors"));
@@ -42,7 +42,7 @@ public class DataframeTest {
         assertEquals((float)33.3,dataframe2.valMax("temp"));
 
         assertNull(dataframe2.valMax("month"));//Max sur un String
-    }*/
+    }
 
     @Test
     public void valMin() {
