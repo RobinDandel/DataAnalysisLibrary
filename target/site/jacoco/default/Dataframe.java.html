@@ -6,11 +6,11 @@ import java.util.List;
 
 public class Dataframe {
     Object[][] tab;//données (la 1ère ligne pour les labels des colonnes)
-<span class="pc" id="L9">    String[] types = null;//tableau des types de chaque colonne</span>
-<span class="nc" id="L10">    Dataframe(Object[][] tab,String[] types){</span>
-<span class="nc" id="L11">        this.tab =tab;</span>
-<span class="nc" id="L12">        this.types=types;</span>
-<span class="nc" id="L13">    }</span>
+<span class="fc" id="L9">    String[] types = null;//tableau des types de chaque colonne</span>
+<span class="fc" id="L10">    Dataframe(Object[][] tab,String[] types){</span>
+<span class="fc" id="L11">        this.tab =tab;</span>
+<span class="fc" id="L12">        this.types=types;</span>
+<span class="fc" id="L13">    }</span>
 <span class="fc" id="L14">    Dataframe(String pathCsvFile){</span>
 <span class="fc" id="L15">        this.tab =parseurCSV(pathCsvFile);</span>
 <span class="fc" id="L16">    }</span>
@@ -50,205 +50,197 @@ public class Dataframe {
 <span class="fc" id="L50">                            break;</span>
                         case &quot;Float&quot;:
 <span class="fc" id="L52">                            newTab[i][j]=Float.parseFloat(cases[j]);</span>
-<span class="fc" id="L53">                            break;</span>
-                        default:
-<span class="nc" id="L55">                            System.err.println(&quot;Le type n'est pas bon&quot;);</span>
+                            break;
                     }
                 }
-<span class="fc" id="L58">                i++;</span>
+<span class="fc" id="L56">                i++;</span>
             }
-<span class="fc" id="L60">            fileCSV.close();</span>
-<span class="nc" id="L61">        }catch (Exception e){</span>
-<span class="nc" id="L62">            System.out.println(&quot;Problème avec le fichier '.csv' : &quot;+e);</span>
-<span class="fc" id="L63">        }</span>
-<span class="fc" id="L64">        return newTab;</span>
+<span class="fc" id="L58">            fileCSV.close();</span>
+<span class="nc" id="L59">        }catch (Exception e){</span>
+<span class="nc" id="L60">            System.out.println(&quot;Problème avec le fichier '.csv' : &quot;+e);</span>
+<span class="fc" id="L61">        }</span>
+<span class="fc" id="L62">        return newTab;</span>
     }
 
     Object[][] initializationDataframe(String pathCsvFile) throws IOException {
         //initialisation tableau
-<span class="fc" id="L69">        int nbligne=0,nbColonne=0;</span>
+<span class="fc" id="L67">        int nbligne=0,nbColonne=0;</span>
         String[] cases;
-<span class="fc" id="L71">        Object[][] newTab = null;</span>
+<span class="fc" id="L69">        Object[][] newTab = null;</span>
 
-<span class="fc" id="L73">        BufferedReader initTab = new BufferedReader(new FileReader(pathCsvFile));</span>
-<span class="fc" id="L74">        cases = initTab.readLine().split(&quot;,&quot;);</span>
-<span class="fc" id="L75">        nbColonne=cases.length;</span>
-<span class="fc" id="L76">        nbligne++;</span>
-<span class="fc bfc" id="L77" title="All 2 branches covered.">        while(null!=initTab.readLine()) { nbligne++;}</span>
-<span class="fc" id="L78">        initTab.close();</span>
-<span class="fc" id="L79">        return new Object[nbligne-1][nbColonne];</span>
+<span class="fc" id="L71">        BufferedReader initTab = new BufferedReader(new FileReader(pathCsvFile));</span>
+<span class="fc" id="L72">        cases = initTab.readLine().split(&quot;,&quot;);</span>
+<span class="fc" id="L73">        nbColonne=cases.length;</span>
+<span class="fc" id="L74">        nbligne++;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        while(null!=initTab.readLine()) { nbligne++;}</span>
+<span class="fc" id="L76">        initTab.close();</span>
+<span class="fc" id="L77">        return new Object[nbligne-1][nbColonne];</span>
     }
 
 
 
     void displayAllDataframe(){
-<span class="nc bnc" id="L85" title="All 2 branches missed.">        for (int i = 0; i&lt; tab.length; i++){</span>
-<span class="nc bnc" id="L86" title="All 2 branches missed.">            for (int j = 0; j&lt; tab[i].length; j++){</span>
-<span class="nc" id="L87">                System.out.print(tab[i][j]+&quot;\t\t&quot;);</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        for (int i = 0; i&lt; tab.length; i++){</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">            for (int j = 0; j&lt; tab[i].length; j++){</span>
+<span class="fc" id="L85">                System.out.print(tab[i][j]+&quot;\t\t&quot;);</span>
             }
-<span class="nc" id="L89">            System.out.println(&quot;&quot;);</span>
+<span class="fc" id="L87">            System.out.println(&quot;&quot;);</span>
         }
-<span class="nc" id="L91">    }</span>
+<span class="fc" id="L89">    }</span>
 
     public void displayFirstLigneDataFrame(){
-<span class="nc bnc" id="L94" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[0].length; j++){</span>
-<span class="nc" id="L95">            System.out.print(tab[0][j]+&quot;\t\t&quot;);</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[0].length; j++){</span>
+<span class="nc" id="L93">            System.out.print(tab[0][j]+&quot;\t\t&quot;);</span>
         }
-<span class="nc" id="L97">        System.out.println(&quot;&quot;);</span>
-<span class="nc bnc" id="L98" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[1].length; j++){</span>
-<span class="nc" id="L99">            System.out.print(tab[1][j]+&quot;\t\t&quot;);</span>
+<span class="nc" id="L95">        System.out.println(&quot;&quot;);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[1].length; j++){</span>
+<span class="nc" id="L97">            System.out.print(tab[1][j]+&quot;\t\t&quot;);</span>
         }
-<span class="nc" id="L101">    }</span>
+<span class="nc" id="L99">    }</span>
 
     public void displayLastLigneDataFrame(){
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[0].length; j++){</span>
-<span class="nc" id="L105">            System.out.print(tab[0][j]+&quot;\t\t&quot;);</span>
+<span class="nc bnc" id="L102" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[0].length; j++){</span>
+<span class="nc" id="L103">            System.out.print(tab[0][j]+&quot;\t\t&quot;);</span>
         }
-<span class="nc" id="L107">        System.out.println(&quot;&quot;);</span>
-<span class="nc bnc" id="L108" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[1].length; j++){</span>
-<span class="nc" id="L109">            System.out.print(tab[tab.length-1][j]+&quot;\t\t&quot;);</span>
+<span class="nc" id="L105">        System.out.println(&quot;&quot;);</span>
+<span class="nc bnc" id="L106" title="All 2 branches missed.">        for (int j = 0; j&lt; tab[1].length; j++){</span>
+<span class="nc" id="L107">            System.out.print(tab[tab.length-1][j]+&quot;\t\t&quot;);</span>
         }
-<span class="nc" id="L111">    }</span>
+<span class="nc" id="L109">    }</span>
 
     //valeur max de la colonne &quot;nameColumn&quot;
     public Object valMax(String label){
-<span class="fc" id="L115">        int i = numColonne(label);</span>
-<span class="pc bpc" id="L116" title="1 of 2 branches missed.">        if (i!=-1){</span>
-<span class="pc bpc" id="L117" title="1 of 4 branches missed.">            switch (types[i]){</span>
+<span class="fc" id="L113">        int i = numColonne(label);</span>
+<span class="pc bpc" id="L114" title="1 of 2 branches missed.">        if (i!=-1){</span>
+<span class="pc bpc" id="L115" title="1 of 4 branches missed.">            switch (types[i]){</span>
                 case &quot;String&quot;:
                     //System.err.println(&quot;La valeur Max ne peut pas être fait sur un String&quot;);
-<span class="fc" id="L120">                    break;</span>
+<span class="fc" id="L118">                    break;</span>
                 case &quot;Integer&quot;:
-<span class="fc" id="L122">                    int iMax=(Integer) tab[1][i];</span>
-<span class="fc bfc" id="L123" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
-<span class="fc bfc" id="L124" title="All 2 branches covered.">                        if ((Integer) tab[k][i]&gt;iMax) {</span>
-<span class="fc" id="L125">                            iMax = (int) tab[k][i];</span>
+<span class="fc" id="L120">                    int iMax=(Integer) tab[1][i];</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
+<span class="fc bfc" id="L122" title="All 2 branches covered.">                        if ((Integer) tab[k][i]&gt;iMax) {</span>
+<span class="fc" id="L123">                            iMax = (int) tab[k][i];</span>
                         }
                     }
-<span class="fc" id="L128">                    return iMax;</span>
+<span class="fc" id="L126">                    return iMax;</span>
                 case &quot;Float&quot;:
-<span class="fc" id="L130">                    float fMax=(Float) tab[1][i];</span>
-<span class="fc bfc" id="L131" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
-<span class="fc bfc" id="L132" title="All 2 branches covered.">                        if ((Float) tab[k][i]&gt;fMax){</span>
-<span class="fc" id="L133">                            fMax=(Float) tab[k][i];</span>
+<span class="fc" id="L128">                    float fMax=(Float) tab[1][i];</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
+<span class="fc bfc" id="L130" title="All 2 branches covered.">                        if ((Float) tab[k][i]&gt;fMax){</span>
+<span class="fc" id="L131">                            fMax=(Float) tab[k][i];</span>
                         }
 
                     }
-<span class="fc" id="L137">                    return fMax;</span>
-                default:
-<span class="nc" id="L139">                    System.err.println(&quot;Le type n'est pas bon&quot;);</span>
+<span class="fc" id="L135">                    return fMax;</span>
             }
         }
-<span class="fc" id="L142">        return null;</span>
+<span class="fc" id="L138">        return null;</span>
     }
 
     //valeur min de la colonne &quot;label&quot;
     public Object valMin(String label){
-<span class="fc" id="L147">        int i = numColonne(label);</span>
-<span class="pc bpc" id="L148" title="1 of 2 branches missed.">        if (i!=-1){</span>
-<span class="pc bpc" id="L149" title="2 of 4 branches missed.">            switch (types[i]){</span>
+<span class="fc" id="L143">        int i = numColonne(label);</span>
+<span class="pc bpc" id="L144" title="1 of 2 branches missed.">        if (i!=-1){</span>
+<span class="pc bpc" id="L145" title="1 of 4 branches missed.">            switch (types[i]){</span>
                 case &quot;String&quot;:
                     //System.err.println(&quot;La valeur Min ne peut pas être fait sur un String&quot;);
-<span class="nc" id="L152">                    break;</span>
+<span class="fc" id="L148">                    break;</span>
                 case &quot;Integer&quot;:
-<span class="fc" id="L154">                    int iMin =(Integer) tab[1][i];</span>
-<span class="fc bfc" id="L155" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
-<span class="pc bpc" id="L156" title="1 of 2 branches missed.">                        if ((Integer) tab[k][i]&lt;iMin) {</span>
-<span class="nc" id="L157">                            iMin = (int) tab[k][i];</span>
+<span class="fc" id="L150">                    int iMin =(Integer) tab[1][i];</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">                        if ((Integer) tab[k][i]&lt;iMin) {</span>
+<span class="fc" id="L153">                            iMin = (int) tab[k][i];</span>
                         }
                     }
-<span class="fc" id="L160">                    return iMin;</span>
+<span class="fc" id="L156">                    return iMin;</span>
                 case &quot;Float&quot;:
-<span class="fc" id="L162">                    float fMin =(Float) tab[1][i];</span>
-<span class="fc bfc" id="L163" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
-<span class="fc bfc" id="L164" title="All 2 branches covered.">                        if ((Float) tab[k][i]&lt;fMin){</span>
-<span class="fc" id="L165">                            fMin =(Float) tab[k][i];</span>
+<span class="fc" id="L158">                    float fMin =(Float) tab[1][i];</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">                    for (int k = 1; k&lt; tab.length; k++){</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">                        if ((Float) tab[k][i]&lt;fMin){</span>
+<span class="fc" id="L161">                            fMin =(Float) tab[k][i];</span>
                         }
 
                     }
-<span class="fc" id="L169">                    return fMin;</span>
-                default:
-<span class="nc" id="L171">                    System.err.println(&quot;Le type n'est pas bon&quot;);</span>
+<span class="fc" id="L165">                    return fMin;</span>
             }
         }
-<span class="nc" id="L174">        return null;</span>
+<span class="fc" id="L168">        return null;</span>
     }
 
     //valeur moyen de la colonne &quot;label&quot;
     public Object valMoy(String label){
-<span class="fc" id="L179">        int i = numColonne(label);</span>
-<span class="pc bpc" id="L180" title="1 of 2 branches missed.">        if (i!=-1){</span>
+<span class="fc" id="L173">        int i = numColonne(label);</span>
+<span class="pc bpc" id="L174" title="1 of 2 branches missed.">        if (i!=-1){</span>
             int k;
-<span class="pc bpc" id="L182" title="2 of 4 branches missed.">            switch (types[i]){</span>
+<span class="pc bpc" id="L176" title="1 of 4 branches missed.">            switch (types[i]){</span>
                 case &quot;String&quot;:
                     //System.err.println(&quot;La valeur Min ne peut pas être fait sur un String&quot;);
-<span class="nc" id="L185">                    break;</span>
+<span class="fc" id="L179">                    break;</span>
                 case &quot;Integer&quot;:
-<span class="fc" id="L187">                    int iMoy =(Integer) tab[1][i];</span>
-<span class="fc bfc" id="L188" title="All 2 branches covered.">                    for (k = 1; k&lt; tab.length; k++){</span>
-<span class="fc" id="L189">                        iMoy+=(Integer) tab[k][i];</span>
+<span class="fc" id="L181">                    int iMoy =(Integer) tab[1][i];</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">                    for (k = 1; k&lt; tab.length; k++){</span>
+<span class="fc" id="L183">                        iMoy+=(Integer) tab[k][i];</span>
                     }
-<span class="fc" id="L191">                    return iMoy/(k-1.0);</span>
+<span class="fc" id="L185">                    return iMoy/(k-1.0);</span>
                 case &quot;Float&quot;:
-<span class="fc" id="L193">                    float fMoy =(Float) tab[1][i];</span>
-<span class="fc bfc" id="L194" title="All 2 branches covered.">                    for (k = 1; k&lt; tab.length; k++){</span>
-<span class="fc" id="L195">                        fMoy+=(Float) tab[k][i];</span>
+<span class="fc" id="L187">                    float fMoy =(Float) tab[1][i];</span>
+<span class="fc bfc" id="L188" title="All 2 branches covered.">                    for (k = 1; k&lt; tab.length; k++){</span>
+<span class="fc" id="L189">                        fMoy+=(Float) tab[k][i];</span>
                     }
-<span class="fc" id="L197">                    return fMoy/(k-1.0);</span>
-                default:
-<span class="nc" id="L199">                    System.err.println(&quot;Le type n'est pas bon&quot;);</span>
+<span class="fc" id="L191">                    return fMoy/(k-1.0);</span>
             }
         }
-<span class="nc" id="L202">        return null;</span>
+<span class="fc" id="L194">        return null;</span>
     }
     //renvoit un sous ensemble des données de la Dataframe existant
     //selection du sous ensemble des données grace aux labels (colonnes) et aux indexs (lignes)
     public Dataframe newDataframe(List&lt;String&gt; labels,List&lt;Integer&gt; indexs){
         Object[][] newTab;
-<span class="nc" id="L208">        String[] newTypes = new String[labels.size()+1];</span>
-<span class="nc" id="L209">        newTypes[0]=&quot;&quot;;</span>
-<span class="nc" id="L210">        List&lt;Integer&gt; numColonnes = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L211">        numColonnes.add(0);</span>
-<span class="nc" id="L212">        int num,k,numType=1;</span>
+<span class="fc" id="L200">        String[] newTypes = new String[labels.size()+1];</span>
+<span class="fc" id="L201">        newTypes[0]=&quot;&quot;;</span>
+<span class="fc" id="L202">        List&lt;Integer&gt; numColonnes = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L203">        numColonnes.add(0);</span>
+<span class="fc" id="L204">        int num,k,numType=1;</span>
         //on prend l'index des bonnes colonnes
-<span class="nc bnc" id="L214" title="All 2 branches missed.">        for (k=0;k&lt;labels.size();k++) {</span>
-<span class="nc" id="L215">            num=numColonne(labels.get(k));</span>
-<span class="nc bnc" id="L216" title="All 4 branches missed.">            if (num!=-1 &amp;&amp; !numColonnes.contains(num)) {</span>
-<span class="nc" id="L217">                numColonnes.add(num);</span>
-<span class="nc" id="L218">                newTypes[numType]=types[num];</span>
-<span class="nc" id="L219">                numType++;</span>
+<span class="fc bfc" id="L206" title="All 2 branches covered.">        for (k=0;k&lt;labels.size();k++) {</span>
+<span class="fc" id="L207">            num=numColonne(labels.get(k));</span>
+<span class="pc bpc" id="L208" title="1 of 4 branches missed.">            if (num!=-1 &amp;&amp; !numColonnes.contains(num)) {</span>
+<span class="fc" id="L209">                numColonnes.add(num);</span>
+<span class="fc" id="L210">                newTypes[numType]=types[num];</span>
+<span class="fc" id="L211">                numType++;</span>
             }
         }
-<span class="nc" id="L222">        newTab = new Object[indexs.size()+1][numColonnes.size()];</span>
-<span class="nc" id="L223">        newTab[0][0]=&quot;&quot;;</span>
+<span class="fc" id="L214">        newTab = new Object[indexs.size()+1][numColonnes.size()];</span>
+<span class="fc" id="L215">        newTab[0][0]=&quot;&quot;;</span>
         //insertion des labels dans le nouveau tableau
-<span class="nc bnc" id="L225" title="All 2 branches missed.">        for (k=0;k&lt;numColonnes.size();k++) {</span>
-<span class="nc" id="L226">            newTab[0][k]=tab[0][numColonnes.get(k)];</span>
+<span class="fc bfc" id="L217" title="All 2 branches covered.">        for (k=0;k&lt;numColonnes.size();k++) {</span>
+<span class="fc" id="L218">            newTab[0][k]=tab[0][numColonnes.get(k)];</span>
         }
         //insertion des données dans le nouveau tableau
-<span class="nc bnc" id="L229" title="All 2 branches missed.">        for (int i=0;i&lt;indexs.size();i++){</span>
-<span class="nc" id="L230">            newTab[i+1][0]=i;</span>
-<span class="nc bnc" id="L231" title="All 2 branches missed.">            for (int j=1;j&lt;numColonnes.size();j++){</span>
-<span class="nc" id="L232">                newTab[i+1][j]=tab[indexs.get(i)+1][numColonnes.get(j)];</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        for (int i=0;i&lt;indexs.size();i++){</span>
+<span class="fc" id="L222">            newTab[i+1][0]=i;</span>
+<span class="fc bfc" id="L223" title="All 2 branches covered.">            for (int j=1;j&lt;numColonnes.size();j++){</span>
+<span class="fc" id="L224">                newTab[i+1][j]=tab[indexs.get(i)+1][numColonnes.get(j)];</span>
             }
         }
 
-<span class="nc" id="L236">        return new Dataframe(newTab,newTypes);</span>
+<span class="fc" id="L228">        return new Dataframe(newTab,newTypes);</span>
     }
 
     //revoit le numéro de la colonne qui a pour nom &quot;label&quot;
     // i si trouvé
     // -1 sinon
     Integer numColonne(String label){
-<span class="fc" id="L243">        int i=1;</span>
-<span class="pc bpc" id="L244" title="1 of 2 branches missed.">        if(label.equals(&quot;&quot;)){return -1;}</span>
-<span class="pc bpc" id="L245" title="1 of 4 branches missed.">        while(i&lt;tab[0].length &amp;&amp; !tab[0][i].equals(label)){</span>
-<span class="fc" id="L246">            i++;</span>
+<span class="fc" id="L235">        int i=1;</span>
+<span class="pc bpc" id="L236" title="1 of 2 branches missed.">        if(label.equals(&quot;&quot;)){return -1;}</span>
+<span class="fc bfc" id="L237" title="All 4 branches covered.">        while(i&lt;tab[0].length &amp;&amp; !tab[0][i].equals(label)){</span>
+<span class="fc" id="L238">            i++;</span>
         }
-<span class="pc bpc" id="L248" title="1 of 2 branches missed.">        if (i&lt; tab[0].length) {</span>
-<span class="fc" id="L249">            return i;</span>
+<span class="fc bfc" id="L240" title="All 2 branches covered.">        if (i&lt; tab[0].length) {</span>
+<span class="fc" id="L241">            return i;</span>
         }else{
-<span class="nc" id="L251">            return -1;</span>
+<span class="fc" id="L243">            return -1;</span>
         }
     }
 

@@ -51,8 +51,6 @@ public class Dataframe {
                         case "Float":
                             newTab[i][j]=Float.parseFloat(cases[j]);
                             break;
-                        default:
-                            System.err.println("Le type n'est pas bon");
                     }
                 }
                 i++;
@@ -60,6 +58,7 @@ public class Dataframe {
             fileCSV.close();
         }catch (Exception e){
             System.out.println("Problème avec le fichier '.csv' : "+e);
+            return null;
         }
         return newTab;
     }
@@ -135,8 +134,6 @@ public class Dataframe {
 
                     }
                     return fMax;
-                default:
-                    System.err.println("Le type n'est pas bon");
             }
         }
         return null;
@@ -167,8 +164,6 @@ public class Dataframe {
 
                     }
                     return fMin;
-                default:
-                    System.err.println("Le type n'est pas bon");
             }
         }
         return null;
@@ -195,8 +190,6 @@ public class Dataframe {
                         fMoy+=(Float) tab[k][i];
                     }
                     return fMoy/(k-1.0);
-                default:
-                    System.err.println("Le type n'est pas bon");
             }
         }
         return null;

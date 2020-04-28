@@ -16,9 +16,10 @@ public class DataframeTest {
     @After
     public void tearDown() throws Exception {
     }
-/*
+
     @Test
-    public void parseurCSV() {
+    public void exceptionFileNotFound() {
+        assertNull(new Dataframe("chien.csv").tab);//fichier .csv qui n'existe pas
     }
 
     @Test
@@ -32,7 +33,7 @@ public class DataframeTest {
     @Test
     public void displayLastLigneDataFrame() {
     }
-*/
+
     @Test
     public void valMax() {
         Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
@@ -46,13 +47,11 @@ public class DataframeTest {
 
     @Test
     public void valMin() {
-        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
-        assertEquals(2,dataframe.valMin("persons"));
-
         Dataframe dataframe2 = new Dataframe("src/main/resources/forestfires.csv");
+        assertEquals(2,dataframe2.valMin("Y"));
         assertEquals((float)0.4,dataframe2.valMin("wind"));
 
-        assertNull(dataframe2.valMax("day"));//Min sur un String
+        assertNull(dataframe2.valMin("day"));//Min sur un String
     }
 
     @Test
@@ -63,29 +62,54 @@ public class DataframeTest {
         Dataframe dataframe2 = new Dataframe("src/main/resources/forestfires.csv");
         assertEquals(9.031523890836556,dataframe2.valMoy("ISI"));
 
-        assertNull(dataframe2.valMax("month"));//Moy sur un String
+        assertNull(dataframe2.valMoy("month"));//Moy sur un String
 
 
     }
-/*
+
     @Test
     public void newDataframe() {
-        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        Dataframe dataframe = new Dataframe("src/main/resources/forestfires.csv");
         List<String> labels = new ArrayList<>();
         List<Integer> indexs = new ArrayList<>();
-        labels.add("doors");
-        labels.add("nb_roues");//n'existe pas
-        labels.add("lug_boot");
+        labels.add("X");
+        labels.add("nb_arbre");//n'existe pas
+        labels.add("day");
+        labels.add("temp");
         indexs.add(2);
         indexs.add(4);
-        Dataframe dataframe2 =dataframe.newDataframe(labels,indexs);
+        Dataframe dataframe2 = dataframe.newDataframe(labels, indexs);
         dataframe2.displayAllDataframe();
-        //compare
-        Object[][] tab2 = new Object[3][3];
+        //vérification de la table des types
+        assertEquals("Integer",dataframe2.types[1]);
+        assertEquals("String",dataframe2.types[2]);
+        assertEquals("Float",dataframe2.types[3]);
+        //vérification de la table des données
+        Object[][] tab2 = new Object[3][4];
+        //1er colonne
+        tab2[0][0]="";
+        tab2[0][1]="X";
+        tab2[0][2]="day";
+        tab2[0][3]="temp";
+        //2ème colonne
+        tab2[1][0]=0;
+        tab2[1][1]=7;
+        tab2[1][2]="sat";
+        tab2[1][3]=(float)14.6;
+        //3ème colonne
+        tab2[2][0]=1;
+        tab2[2][1]=8;
+        tab2[2][2]="sun";
+        tab2[2][3]=(float)11.4;
 
 
-        /////////////////pas fini//////////////////
+        assertEquals(3,dataframe2.tab.length);
+        assertEquals(4,dataframe2.tab[0].length);
+        for (int i=0;i<dataframe2.tab.length;i++){
+            for(int j=0;j<dataframe2.tab[i].length;j++){
+                assertEquals(tab2[i][j],dataframe2.tab[i][j]);
+            }
+        }
     }
-    */
 
 }

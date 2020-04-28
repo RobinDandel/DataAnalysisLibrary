@@ -10,6 +10,8 @@ Robin DANDEL
 -Badge de Travis CI
 -fichier .csv avec le type en haut
 
+-type : String/Integer/Float
+
 
 Source svg:
     Title: Car Evaluation Database
