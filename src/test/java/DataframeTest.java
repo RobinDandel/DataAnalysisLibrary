@@ -22,16 +22,29 @@ public class DataframeTest {
         assertNull(new Dataframe("chien.csv").tab);//fichier .csv qui n'existe pas
     }
 
-    @Test
-    public void displayAllDataframe() {
-    }
 
     @Test
     public void displayFirstLigneDataFrame() {
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        Object[] tabFirstLigne=dataframe.displayFirstLigneDataFrame();
+        assertEquals("vhigh",tabFirstLigne[1]);
+        assertEquals("vhigh",tabFirstLigne[2]);
+        assertEquals(2,tabFirstLigne[3]);
+        assertEquals(2,tabFirstLigne[4]);
+        assertEquals("small",tabFirstLigne[5]);
+        assertEquals("low",tabFirstLigne[6]);
     }
 
     @Test
     public void displayLastLigneDataFrame() {
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        Object[] tabFirstLigne=dataframe.displayLastLigneDataFrame();
+        assertEquals("low",tabFirstLigne[1]);
+        assertEquals("low",tabFirstLigne[2]);
+        assertEquals(5,tabFirstLigne[3]);
+        assertEquals(4,tabFirstLigne[4]);
+        assertEquals("big",tabFirstLigne[5]);
+        assertEquals("high",tabFirstLigne[6]);
     }
 
     @Test
@@ -63,8 +76,6 @@ public class DataframeTest {
         assertEquals(9.031523890836556,dataframe2.valMoy("ISI"));
 
         assertNull(dataframe2.valMoy("month"));//Moy sur un String
-
-
     }
 
     @Test
@@ -79,7 +90,7 @@ public class DataframeTest {
         indexs.add(2);
         indexs.add(4);
         Dataframe dataframe2 = dataframe.newDataframe(labels, indexs);
-        dataframe2.displayAllDataframe();
+        Object[][] tab = dataframe2.displayAllDataframe();
         //vérification de la table des types
         assertEquals("Integer",dataframe2.types[1]);
         assertEquals("String",dataframe2.types[2]);
@@ -103,13 +114,21 @@ public class DataframeTest {
         tab2[2][3]=(float)11.4;
 
 
-        assertEquals(3,dataframe2.tab.length);
-        assertEquals(4,dataframe2.tab[0].length);
-        for (int i=0;i<dataframe2.tab.length;i++){
-            for(int j=0;j<dataframe2.tab[i].length;j++){
-                assertEquals(tab2[i][j],dataframe2.tab[i][j]);
+        assertEquals(3,tab.length);
+        assertEquals(4,tab[0].length);
+        for (int i=0;i<tab.length;i++){
+            for(int j=0;j<tab[i].length;j++){
+                assertEquals(tab2[i][j],tab[i][j]);
             }
         }
     }
+
+    @Test
+    public void numColonne(){
+        Dataframe dataframe = new Dataframe("src/main/resources/Car_ Evaluation_Database.csv");
+        assertSame(3,dataframe.numColonne("doors"));
+        assertSame(-1,dataframe.numColonne(""));
+    }
+
 
 }

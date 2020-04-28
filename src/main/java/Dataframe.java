@@ -80,16 +80,17 @@ public class Dataframe {
 
 
 
-    void displayAllDataframe(){
+    Object[][] displayAllDataframe(){
         for (int i = 0; i< tab.length; i++){
             for (int j = 0; j< tab[i].length; j++){
                 System.out.print(tab[i][j]+"\t\t");
             }
             System.out.println("");
         }
+        return tab;
     }
 
-    public void displayFirstLigneDataFrame(){
+    public Object[] displayFirstLigneDataFrame(){
         for (int j = 0; j< tab[0].length; j++){
             System.out.print(tab[0][j]+"\t\t");
         }
@@ -97,9 +98,10 @@ public class Dataframe {
         for (int j = 0; j< tab[1].length; j++){
             System.out.print(tab[1][j]+"\t\t");
         }
+        return tab[1];
     }
 
-    public void displayLastLigneDataFrame(){
+    public Object[] displayLastLigneDataFrame(){
         for (int j = 0; j< tab[0].length; j++){
             System.out.print(tab[0][j]+"\t\t");
         }
@@ -107,6 +109,7 @@ public class Dataframe {
         for (int j = 0; j< tab[1].length; j++){
             System.out.print(tab[tab.length-1][j]+"\t\t");
         }
+        return tab[tab.length-1];
     }
 
     //valeur max de la colonne "nameColumn"

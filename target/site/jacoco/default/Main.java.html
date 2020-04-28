@@ -3,23 +3,14 @@ import java.util.List;
 
 <span class="nc" id="L4">public class Main {</span>
     public static void main(String[] args) {
-        //Dataframe dataframe = new Dataframe(&quot;src/main/resources/Car_ Evaluation_Database.csv&quot;);
-<span class="nc" id="L7">        Dataframe dataframe = new Dataframe(&quot;src/main/resources/forestfires.csv&quot;);</span>
+<span class="nc" id="L6">        Dataframe dataframe = new Dataframe(&quot;src/main/resources/Car_ Evaluation_Database.csv&quot;);</span>
+        //Dataframe dataframe = new Dataframe(&quot;src/main/resources/forestfires.csv&quot;);
+<span class="nc" id="L8">        dataframe.displayLastLigneDataFrame();</span>
 
-        //System.out.println(dataframe.valMax(&quot;doors&quot;));
-<span class="nc" id="L10">        List&lt;String&gt; labels = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L11">        List&lt;Integer&gt; indexs = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L12">        labels.add(&quot;X&quot;);</span>
-<span class="nc" id="L13">        labels.add(&quot;nb_arbre&quot;);//n'existe pas</span>
-<span class="nc" id="L14">        labels.add(&quot;day&quot;);</span>
-<span class="nc" id="L15">        labels.add(&quot;temp&quot;);</span>
-<span class="nc" id="L16">        indexs.add(2);</span>
-<span class="nc" id="L17">        indexs.add(4);</span>
-<span class="nc" id="L18">        Dataframe dataframe2 =dataframe.newDataframe(labels,indexs);</span>
-<span class="nc" id="L19">        dataframe2.displayAllDataframe();</span>
+
 
        // dataframe.displayAllDataframe();
         //System.out.println(dataframe.valMoy(&quot;ISI&quot;));
-<span class="nc" id="L23">    }</span>
+<span class="nc" id="L14">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.3.201901230119</span></div></body></html>
