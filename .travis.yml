@@ -4,10 +4,6 @@ jdk:
   - openjdk8
 #  - openjdk11
 
-deploy:
-  on:
-    tags: true
-
 #######A METTRE###########"
 #services:
 #  -docker
