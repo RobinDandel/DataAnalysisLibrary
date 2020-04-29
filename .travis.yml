@@ -4,14 +4,13 @@ jdk:
   - openjdk8
 #  - openjdk11
 
-#######A METTRE###########"
-#services:
-#  -docker
+services:
+  -docker
 
 #before_script:
 #  - pip install docker-compose
 
-#script: clean validate compile test package verify install site -f pom.xml
+script: docker push robindandel/data_analysis_library:dataAnalysisTag
 
 #before_install:
 #  - cd java
