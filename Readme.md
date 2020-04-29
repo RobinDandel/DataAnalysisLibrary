@@ -15,7 +15,7 @@ Dans les fichiers .csv j'ai mis le type les colonnes en haut pour simplifier. Il
 
 Fonctionnalités implémentées : Grace à cette bibliothèque, nous allons pouvoir créer des Dataframe grâce à des fichier .csv (avec les Types en haut du fichier) ou avec des tableaux de donner. Le code se trouve dans 'src/main/java/Dataframe.java'.
 
--Nous pouvons afficher la première ligne et la dernière ligne de le Dataframe.
+-Nous pouvons afficher statistique du Dataframe : afficher la première ligne ou la dernière ou entièrement le Dataframe.
 
 -Nous pouvons afficher entièrement le Dataframe.
 
