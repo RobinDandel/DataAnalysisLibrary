@@ -3,7 +3,7 @@ Robin DANDEL
 
 Projet seul
 
-Le Projet utilise Maven qui permet d'avoir plusieurs plugins tel que Jacoco.
+Le Projet a été créer avec l'IDE IntelliJ et utilise Maven qui permet d'avoir plusieurs plugins tel que Jacoco.
 
 J'utilise JUnit 4 pour réaliser les tests qui se trouvent dans 'src/test/java/DataframeTest.java'.
 
@@ -18,6 +18,16 @@ Fonctionnalités implémentées : Grace à cette bibliothèque, nous allons pouv
 -Nous pouvons afficher des statistiques du Dataframe : afficher la première ou la dernière ligne ou entièrement le Dataframe.
 
 -Nous pouvons sélectionner dans le Dataframe un sous ensemble en renseignant les lignes et les colonnes que nous souhaitons garder. Cela va permettre de créer un autre Dataframe qui ne comportera que les lignes et colonnes sélectionnées.
+
+
+
+Feedback :
+
+Maven est très pratique à utiliser, mais des fois certains plugins ne sont pas compatibles entre eux.
+
+Travis est facile à prendre en main (à part un moment où il s’est désynchronisé avec GitHub).
+
+Jacoco (plugin de couverture du code) m’a permis de trouver certains bugs, je pense l’utiliser dans mes projets à l’avenir.
 
 
 
